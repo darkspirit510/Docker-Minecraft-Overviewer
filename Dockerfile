@@ -23,10 +23,10 @@ WORKDIR /tmp/world
 WORKDIR /tmp/export
 WORKDIR /tmp/config
 
-RUN useradd -ms /bin/bash www-data
+RUN useradd -u 33 -g 33 -s /bin/bash www-data
 USER www-data
 
 WORKDIR /
 COPY entrypoint.sh .
 
-ENTRYPOINT ["scheduled_creator.sh"]
+ENTRYPOINT ["nice", "-n", "19", "scheduled_creator.sh"]
