@@ -1,6 +1,6 @@
 FROM ubuntu:18.04
 
-RUN apt-get update &&
+RUN apt-get update && \
     apt-get install -y \
         build-essential \
         git \
@@ -23,10 +23,10 @@ WORKDIR /tmp/world
 WORKDIR /tmp/export
 WORKDIR /tmp/config
 
-RUN useradd -u 33 -g 33 -s /bin/bash www-data
+#RUN useradd -u 33 -g 33 -s /bin/bash www-data
 USER www-data
 
 WORKDIR /
-COPY entrypoint.sh .
+COPY scheduled_creator.sh .
 
-ENTRYPOINT ["nice", "-n", "19", "scheduled_creator.sh"]
+ENTRYPOINT ["nice", "-n", "19", "/scheduled_creator.sh"]
