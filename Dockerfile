@@ -17,8 +17,10 @@ RUN git clone https://github.com/overviewer/Minecraft-Overviewer.git .
 ADD https://launcher.mojang.com/v1/objects/e3f78cd16f9eb9a52307ed96ebec64241cc5b32d/client.jar /tmp/overviewer/client.jar
 ADD https://raw.githubusercontent.com/darkspirit510/Docker-Minecraft-Overviewer/master/scheduled_creator.sh /scheduled_creator.sh
 
-RUN chmod +rx /scheduled_creator.sh
-#RUN chmod 775 /tmp/overviewer/client.jar
+RUN chmod +rx /scheduled_creator.sh && \
+    chmod 775 /tmp/overviewer/client.jar && \
+    mkdir -p /home/www-data/.minecraft/versions/1.15/ && \
+    cp /tmp/overviewer/client.jar /home/www-data/.minecraft/versions/1.15/1.15.jar
 
 RUN python3 setup.py build
 
