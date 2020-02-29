@@ -3,3 +3,5 @@ COPY/Minecraft-Overviewer-minecraft113-fixed/overviewer_core/.DS_Store
 COPY/.DS_Store
 
 .idea/
+
+secrets.yml
