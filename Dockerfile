@@ -31,7 +31,4 @@ WORKDIR /tmp/config
 #RUN useradd -u 33 -g 33 -s /bin/bash www-data
 USER www-data
 
-#eg. "--genpoi"
-ENV overviewerParams=""
-
-ENTRYPOINT ["nice", "-n", "19", "/scheduled_creator.sh", "${overviewerParams}"]
+ENTRYPOINT ["nice", "-n", "19", "/scheduled_creator.sh"]
