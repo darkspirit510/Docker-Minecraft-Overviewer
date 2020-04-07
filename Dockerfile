@@ -18,7 +18,7 @@ ADD https://launcher.mojang.com/v1/objects/e3f78cd16f9eb9a52307ed96ebec64241cc5b
 ADD https://raw.githubusercontent.com/darkspirit510/Docker-Minecraft-Overviewer/master/scheduled_creator.sh /scheduled_creator.sh
 
 RUN chmod +rx /scheduled_creator.sh && \
-    chmod 775 /tmp/overviewer/client.jar && \
+    chmod 664 /tmp/overviewer/client.jar && \
     mkdir -p /home/www-data/.minecraft/versions/1.15/ && \
     cp /tmp/overviewer/client.jar /home/www-data/.minecraft/versions/1.15/1.15.jar
 
