@@ -11,9 +11,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp/overviewer
-RUN git clone https://github.com/overviewer/Minecraft-Overviewer.git .
+RUN git clone --progress --verbose https://github.com/overviewer/Minecraft-Overviewer.git .
 
-# https://mcversions.net/ https://minecraft-de.gamepedia.com/Versionen/Vollversion_1.15 1.15.1
+# https://mcversions.net/download/1.15.2
 ADD https://launcher.mojang.com/v1/objects/e3f78cd16f9eb9a52307ed96ebec64241cc5b32d/client.jar /tmp/overviewer/client.jar
 ADD https://raw.githubusercontent.com/darkspirit510/Docker-Minecraft-Overviewer/master/scheduled_creator.sh /scheduled_creator.sh
 
@@ -24,11 +24,14 @@ RUN chmod +rx /scheduled_creator.sh && \
 
 RUN python3 setup.py build
 
-WORKDIR /tmp/world
+WORKDIR /tmp/server
 WORKDIR /tmp/export
 WORKDIR /tmp/config
 
 #RUN useradd -u 33 -g 33 -s /bin/bash www-data
 USER www-data
 
-ENTRYPOINT ["nice", "-n", "19", "/scheduled_creator.sh"]
+#eg. "--genpoi"
+ENV overviewerParams=""
+
+ENTRYPOINT ["nice", "-n", "19", "/scheduled_creator.sh", "${overviewerParams}"]

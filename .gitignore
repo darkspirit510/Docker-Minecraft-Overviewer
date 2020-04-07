@@ -1,7 +1,7 @@
 .DS_Store
 COPY/Minecraft-Overviewer-minecraft113-fixed/overviewer_core/.DS_Store
 COPY/.DS_Store
-
 .idea/
-
 secrets.yml
+export
+.DS_Store
