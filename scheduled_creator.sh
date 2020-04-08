@@ -5,9 +5,26 @@ while true; do
   /tmp/overviewer/overviewer.py --config=/tmp/config/config.py
 
   echo "Extending map scripts 🚀"
-  cat <<EOT > /tmp/export/map_magic.js
+  cat <<EOT >/tmp/export/map_magic.js
 function map_magic() {
-  alert("TEST");
+  var xmlhttp = new XMLHttpRequest();
+
+  xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        JSON.parse(this.responseText).forEach(player => {
+        var greenIcon = L.icon({
+          iconUrl: 'https://crafatar.com/avatars/' + player.uuid,
+          iconSize: [32, 32],
+        });
+        L.marker(overviewer.util.fromWorldToLatLng(player.x, player.y, player.z, conf), {icon: greenIcon})
+          .addTo(overviewer.map)
+          .bindTooltip(player.name);
+        });
+      }
+    }
+  };
+  xmlhttp.open("GET", "player_positions.json", true);
+  xmlhttp.send();
 }
 EOT
 
