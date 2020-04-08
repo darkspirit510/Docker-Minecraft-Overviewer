@@ -10,7 +10,7 @@ while true; do
   sed -i '/<script src="leaflet.js"><\/script>/a <script src="map_magic.js"><\/script>' /tmp/export/index.html
   sed -i -e 's/overviewer.util.initialize()/overviewer.util.initialize();map_magic();/g' /tmp/export/index.html
 
-  cp map_magic.js /tmp/export/
+  cp /map_magic.js /tmp/export/
 
   echo "Sleeping 1h... 🥱"
   sleep 1h
