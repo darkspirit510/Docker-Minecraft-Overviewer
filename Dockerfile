@@ -15,6 +15,7 @@ RUN git clone --progress --verbose https://github.com/overviewer/Minecraft-Overv
 
 # https://mcversions.net/download/1.15.2
 ADD https://launcher.mojang.com/v1/objects/e3f78cd16f9eb9a52307ed96ebec64241cc5b32d/client.jar /tmp/overviewer/client.jar
+ADD https://raw.githubusercontent.com/darkspirit510/Docker-Minecraft-Overviewer/master/map_magic.js /map_magic.js
 ADD https://raw.githubusercontent.com/darkspirit510/Docker-Minecraft-Overviewer/master/scheduled_creator.sh /scheduled_creator.sh
 
 RUN chmod +rx /scheduled_creator.sh && \
