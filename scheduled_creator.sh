@@ -11,6 +11,8 @@ function map_magic() {
 
     xmlhttp.onreadystatechange = function () {
         if (this.readyState === 4 && this.status === 200) {
+            const conf = overviewer.current_layer[overviewer.current_world].tileSetConfig;
+
             JSON.parse(this.responseText).forEach(player => {
                 const icon = L.icon({
                     iconUrl: 'https://crafatar.com/avatars/' + player.uuid,
