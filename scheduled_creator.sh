@@ -25,7 +25,7 @@ function map_magic() {
                 });
                 L.marker(overviewer.util.fromWorldToLatLng(player.x, player.y, player.z, conf), {icon: icon})
                     .addTo(overviewer.map)
-                    .bindTooltip(player.name + "\nZuletzt Online: " + formatDate(player.lastSeen));
+                    .bindTooltip(player.name + " (Zuletzt Online: " + formatDate(player.lastSeen) + ")");
             });
         }
     };
