@@ -6,6 +6,11 @@ while true; do
 
   echo "Extending map scripts 🚀"
   cat <<EOT >/tmp/export/map_magic.js
+function formatDate(milliseconds) {
+  const d = new Date(milliseconds);
+
+  return d.toLocaleString('de-DE');
+}
 function map_magic() {
     const xmlhttp = new XMLHttpRequest();
 
@@ -20,7 +25,7 @@ function map_magic() {
                 });
                 L.marker(overviewer.util.fromWorldToLatLng(player.x, player.y, player.z, conf), {icon: icon})
                     .addTo(overviewer.map)
-                    .bindTooltip(player.name);
+                    .bindTooltip(player.name + "\nZuletzt Online: " + formatDate(player.lastSeen));
             });
         }
     };
