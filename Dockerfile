@@ -31,4 +31,4 @@ WORKDIR /tmp/config
 #RUN useradd -u 33 -g 33 -s /bin/bash www-data
 USER www-data
 
-ENTRYPOINT ["nice", "-n", "19", "/scheduled_creator.sh"]
+ENTRYPOINT ["nice", "-n", "18", "/scheduled_creator.sh"]
