@@ -13,14 +13,14 @@ RUN apt-get update && \
 WORKDIR /tmp/overviewer
 RUN git clone --progress --verbose https://github.com/overviewer/Minecraft-Overviewer.git .
 
-# https://mcversions.net/download/1.15.2
-ADD https://launcher.mojang.com/v1/objects/e3f78cd16f9eb9a52307ed96ebec64241cc5b32d/client.jar /tmp/overviewer/client.jar
+# https://mcversions.net/download/1.16.1
+ADD https://launcher.mojang.com/v1/objects/c9abbe8ee4fa490751ca70635340b7cf00db83ff/client.jar /tmp/overviewer/client.jar
 ADD https://raw.githubusercontent.com/darkspirit510/Docker-Minecraft-Overviewer/master/scheduled_creator.sh /scheduled_creator.sh
 
 RUN chmod +rx /scheduled_creator.sh && \
     chmod 664 /tmp/overviewer/client.jar && \
-    mkdir -p /home/www-data/.minecraft/versions/1.15/ && \
-    cp /tmp/overviewer/client.jar /home/www-data/.minecraft/versions/1.15/1.15.jar
+    mkdir -p /home/www-data/.minecraft/versions/1.16/ && \
+    cp /tmp/overviewer/client.jar /home/www-data/.minecraft/versions/1.16/1.16.jar
 
 RUN python3 setup.py build
 
