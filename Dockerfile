@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp/overviewer
-RUN git clone --progress --verbose https://github.com/darkspirit510/Docker-Minecraft-Overviewer/ .
+RUN git clone --progress --verbose https://github.com/overviewer/Minecraft-Overviewer.git .
 
 # Alternative to https://mcversions.net/download/1.18.1
 ADD https://overviewer.org/textures/latest /tmp/overviewer/client.jar
